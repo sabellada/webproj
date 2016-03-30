@@ -18,13 +18,22 @@
 				Site Statistics Module
 
 				@Authors:
-					Maiko Franisco Rugeria
+					
 					Jan Brian Despi
-					Michael Romero
 					Christian Lizardo
+					Michael Romero
+					Maiko Franisco Rugeria
+					
 			*/
 
 			//--------------------------------------------------Functions---------------------------------------------------
+			
+?>
+	<div class="container" style="margin-top: -50px;">
+		<div class="content-wrapper">
+			<div class="content" >
+	<?php
+	
 			/*
 				This function counts all the users registered
 				in the system. Users include faculty members
@@ -33,11 +42,7 @@
 				@parameters: None
 				@return: None
 			*/
-?>
-	<div class="container" style="margin-top: -50px;">
-		<div class="content-wrapper">
-			<div class="content" >
-	<?php
+			
 			function countUsers()
 			{
 				$usercount_sql = "SELECT COUNT(*) as userCount FROM users";
@@ -223,7 +228,7 @@
 				echo "<table id='users'>";
 				echo "<tr>";
 				echo "<th>DATE</th>";
-				echo "<th>VALUE</th>";
+				echo "<th>USERS</th>";
 				echo "</tr>";
 
 				$fetch_userStatistics_sql = "SELECT * FROM users_statistics ORDER BY date DESC LIMIT 10";
@@ -255,7 +260,7 @@
 				echo "<table id='students'>";
 				echo "<tr>";
 				echo "<th>DATE</th>";
-				echo "<th>VALUE</th>";
+				echo "<th>STUDENTS</th>";
 				echo "</tr>";
 
 				$fetch_studentStatistics_sql = "SELECT * FROM students_statistics ORDER BY date DESC LIMIT 10";
@@ -287,7 +292,7 @@
 				echo "<table id='faculty'>";
 				echo "<tr>";
 				echo "<th>DATE</th>";
-				echo "<th>VALUE</th>";
+				echo "<th>FACULTY</th>";
 				echo "</tr>";
 
 				$fetch_facultyStatistics_sql = "SELECT * FROM faculty_statistics ORDER BY date DESC LIMIT 10";
@@ -319,7 +324,7 @@
 				echo "<table id='events'>";
 				echo "<tr>";
 				echo "<th>DATE</th>";
-				echo "<th>VALUE</th>";
+				echo "<th>EVENTS</th>";
 				echo "</tr>";
 
 				$fetch_eventStatistics_sql = "SELECT * FROM event_statistics ORDER BY date DESC LIMIT 10";
@@ -344,7 +349,7 @@
 				echo "<table id='news'>";
 				echo "<tr>";
 				echo "<th>DATE</th>";
-				echo "<th>VALUE</th>";
+				echo "<th>NEWS</th>";
 				echo "</tr>";
 
 				$fetch_newsStatistics_sql = "SELECT * FROM news_statistics ORDER BY date DESC LIMIT 10";
@@ -363,7 +368,7 @@
 				echo "</table><br>";
 			}
 
-			function fetchVisitStatistics()
+			/*function fetchVisitStatistics()
 			{
 				echo "<h3>Site Visits</h3>";
 				echo "<table id='visits'>";
@@ -386,9 +391,9 @@
 				}
 
 				echo "</table><br>";
-			}
+			}*/
 			
-			function fetchCurriculumDownloadStatistics()
+			/*function fetchCurriculumDownloadStatistics()
 			{
 				echo "<h3>Curriculum Downloads</h3>";
 				echo "<table id='curr_downloads'>";
@@ -411,11 +416,11 @@
 				}
 
 				echo "</table><br>";
-			}
+			}*/
 			//--------------------------------------------------Connect DB---------------------------------------------------
 			$servername = "localhost";
 			$username = "root";
-			$password = "";
+			$password = "root";
 			$dbname = "dcs_project";
 
 			// Create connection
@@ -428,12 +433,12 @@
 			//--------------------------------------------------Main Program---------------------------------------------------
 			//Count/Update Statistics
 			echo "<div style='margin:0 auto; text align: center;'>";
-			countUsers(); 
+			/*countUsers(); 
 			countStudents(); 
 			countFaculty(); 
 			countNews(); 
 			countEvents(); 
-			countAdvisees();
+			countAdvisees();*/
 
 			//Fetch Statistics
 			fetchUSerStatistics();
@@ -441,9 +446,11 @@
 			fetchFacultyStatistics();
 			fetchEventStatistics();
 			fetchNewsStatistics();
-			fetchVisitStatistics();
-			fetchCurriculumDownloadStatistics();
+			//fetchVisitStatistics();
+			//fetchCurriculumDownloadStatistics();
 			echo "<div>";
+			
+
 
 		?>
 
