@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head><title>Site Statistics</title></head>
+<style type="text/css">
+table{
+	min-width: 700px; 
+	margin: 0 auto;
+}
+</style>
 <body>
 
 
@@ -420,7 +426,7 @@
 			//--------------------------------------------------Connect DB---------------------------------------------------
 			$servername = "localhost";
 			$username = "root";
-			$password = "root";
+			$password = "";
 			$dbname = "dcs_project";
 
 			// Create connection
