@@ -172,7 +172,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="legality">
+		<div class="legality" style="margin-bottom: 150px;">
 			&copy; Copyright 2016 by Your Company
 		</div>
 	</footer>
