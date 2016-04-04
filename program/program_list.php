@@ -10,7 +10,7 @@
 <div class="container">
 	<div class="content-wrapper" style="padding: 150px 0px 50px 0px">
 		<?php 
-			if ($_SESSION['user_type'] == 1) {
+			if ($_SESSION['is_prog_coordinator'] == 1 || ['is_moderator'] == 1) {
 			echo '<form style="padding: 0px"class="addeve" action="add_curriculum.php" method="POST">'.
 				'<input type="submit" name="add_curriculum_btn" value="Add Curriculum">'.
 			'</form>';

@@ -19,7 +19,10 @@
 				<th>Course code</th>
 				<th>Course Description</th>
 				<th>Credit units</th>
-				<th>Prerequisites<th>
+				<th>Prerequisites</th>
+				<?php if ($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 3 || $_SESSION['user_type'] == 5) { 
+					echo '<th>Action</th>';
+				} ?>
 			</tr>
 			<?php 
 				while($course = mysqli_fetch_array($courses)) {
@@ -36,13 +39,21 @@
 					}
 					if($pre == "")
 						$pre = "NONE";
-					echo 
-					"<tr> " .
-						"<td>" . $course['course_code'] ."</td>" .
-						"<td>" . $course['course_name'] ."</td>" .
-						"<td>" . $course['credit_units'] ."</td>" .
-						"<td>" . $pre ."</td>" .
-					"<tr>";
+					echo "<tr> ";
+					echo	"<td>" . $course['course_code'] ."</td>";
+					echo	"<td>" . $course['course_name'] ."</td>";
+					echo	"<td>" . $course['credit_units'] ."</td>";
+					echo	"<td>" . $pre ."</td>";
+					if ($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 3 || $_SESSION['user_type'] == 5) {
+			?>
+					<td>
+						<button data-courseid="<?php echo $course['course_id']; ?>" 
+								class="delete-course"
+								style="background: none; border: 1px solid #8A97A0; border-radius: 3px; padding: 5px; outline: none; color: #8A97A0;">DELETE</button>
+					</td>
+			<?php
+					}
+					echo"<tr>";
 			} ?>
 		</table>
 	</div>

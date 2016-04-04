@@ -46,7 +46,7 @@
 				<li class='has-sub'><a href='../profile.php'><?php echo $_SESSION['first_name'];?></a>
 					<ul>
 						<li><a href='../logout.php'>Log Out</a></li>
-						<?php if ($_SESSION['is_admin'] == 1) {
+						<?php if ($_SESSION['user_type'] == 1) {
 							echo "<li class='has-sub'><a>Faculty</a>";
 								echo "<ul>";
 									 echo "<li><a href='../faculty.php'>View Faculty</a></li>";

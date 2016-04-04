@@ -64,8 +64,40 @@ $(document).ready(function () {
     }
     
 	var curriculum_id = $('input[name="curriculum_id"]').val();    
-    $.getJSON("http://" + window.location.hostname + "/web%20Dev%20project/program/tree_data.php?curriculum_id=" + curriculum_id, function(data) {
+    $.getJSON("../program/tree_data.php?curriculum_id=" + curriculum_id, function(data) {
         options.items = data;
         $("#diagram").famDiagram(options);
+    });
+});
+
+$(document).ready(function () {
+    $('.delete-curr-subj').on('click', function() {
+        var course_id = $(this).data("subjid");
+        var curr_id = $(this).data("currid");
+        var prog_code = $(this).data("progcode");
+        var curr_year = $(this).data("curryear");
+        if(confirm("Are you sure you want to delete this subject?")) {
+            location.href = "deleteSubject.php?course_id="+course_id+"&curr_id="+curr_id+"&prog_code="+prog_code+"&curr_year="+curr_year;
+        }
+    });
+});
+
+
+$(document).ready(function () {
+    $('#delete-curr').on('click', function() {
+        var curr_id = $(this).data("currid");
+        if(confirm("Are you sure you want to delete this curriculum?")) {
+            location.href = "deleteCurriculum.php?curr_id="+curr_id;
+        }
+    });
+});
+
+
+$(document).ready(function () {
+    $('.delete-course').on('click', function() {
+        var course_id = $(this).data("courseid");
+        if(confirm("Are you sure you want to delete this course?")) {
+            location.href = "deleteCourse.php?course_id="+course_id;
+        }
     });
 });

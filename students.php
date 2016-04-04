@@ -3,7 +3,7 @@
 	session_start();
 	$servername = "localhost";
 	$username = "root";
-	$password = "admin";
+	$password = "";
 	$dbname = "dcs_project";
 
 	// Create connection
@@ -15,7 +15,7 @@
 	}
 	
 	if(!$_SESSION['user_id'] || $_SESSION['is_admin'] != 1) {
-		header("Location: login.php");
+		header("Location: students.php");
 		exit;
 	} else {
 		$cid = $_SESSION['user_id'];

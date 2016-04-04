@@ -28,6 +28,7 @@
 				$sql = "SELECT * FROM course WHERE course_id=$course_id";
 				$courses = mysqli_query($conn, $sql);
 				$course = mysqli_fetch_array($courses);
+				$subjects[$x][$y][$z]['course_id']   = $course_id;
 				$subjects[$x][$y][$z]['course_code'] = $course['course_code'];
 				$subjects[$x][$y][$z]['course_name'] = $course['course_name'];
 				$subjects[$x][$y][$z]['credit_units'] = $course['credit_units'];
@@ -60,6 +61,11 @@
 			<input name="curriculum_year" value="<?php echo $curriculum_year; ?>" hidden>
 			<input style="margin: 1px" type="submit" value="Add Subject">
 		</form>
+        <div style="padding: 0px;"class="addeve">
+            <input style="margin: 1px" type="submit" value="Delete Curriculum"
+                   data-currid="<?php echo $curriculum_id ?>" 
+                   id="delete-curr">
+        </div>
 	<?php } ?>
 		<form style="padding: 0px"class="addeve" action="pdf_view.php" method="GET">
 			<input name="program_code" value="<?php echo $program_code; ?>" hidden>
@@ -98,6 +104,9 @@
                                     <th class='course-name'>Course Description</th>
                                     <th class='credit-units'>Units</th>
                                     <th class='prerequisites'>Prerequisites</th>
+                                    <?php if ($_SESSION['is_prog_coordinator'] == 1) {?>
+                                    	<th>Action</th>
+                                    <?php } ?>
                                 </tr>
                                 <?php 
                                     if(count($subjects) >= $x && count($subjects[$x]) > 0) {
@@ -107,6 +116,17 @@
     										echo "<td class='course-name'>". $subjects[$x][1][$z]['course_name'] ."</td>";
     										echo "<td class='credit-units'>". $subjects[$x][1][$z]['credit_units'] ."</td>";
     										echo "<td class='prerequisites'>". $subjects[$x][1][$z]['prerequisites'] ."</td>";
+    										if ($_SESSION['is_prog_coordinator'] == 1) {
+    							?>
+    										<td>
+    											<button data-subjid="<?php echo $subjects[$x][1][$z]['course_id']; ?>" 
+    													data-currid="<?php echo $curriculum_id ?>" 
+    													data-progcode="<?php echo $program_code; ?>"
+    													data-curryear="<?php echo $curriculum_year; ?>"
+    													class="delete-curr-subj">delete</button>
+    										</td>
+    							<?php
+                                    		}
     										echo "</tr>";
     									}
                                     }
@@ -122,6 +142,9 @@
                                     <th class='course-name'>Course Description</th>
                                     <th class='credit-units'>Units</th>
                                     <th class='prerequisites'>Prerequisites</th>
+                                    <?php if ($_SESSION['is_prog_coordinator'] == 1) {?>
+                                    	<th>Action</th>
+                                    <?php } ?>
                                 </tr>
                                 <?php 
                                     if(count($subjects) >= $x && count($subjects[$x]) > 1) {
@@ -131,6 +154,17 @@
     										echo "<td class='course-name'>". $subjects[$x][2][$z]['course_name'] ."</td>";
     										echo "<td class='credit-units'>". $subjects[$x][2][$z]['credit_units'] ."</td>";
     										echo "<td class='prerequisites'>". $subjects[$x][2][$z]['prerequisites'] ."</td>";
+    										if ($_SESSION['is_prog_coordinator'] == 1) {
+    							?>
+    										<td>
+    											<button data-subjid="<?php echo $subjects[$x][2][$z]['course_id']; ?>" 
+    													data-currid="<?php echo $curriculum_id ?>" 
+    													data-progcode="<?php echo $program_code; ?>"
+    													data-curryear="<?php echo $curriculum_year; ?>"
+    													class="delete-curr-subj">delete</button>
+    										</td>
+    							<?php
+                                    		}
     										echo "</tr>";
 									   }
                                     }
@@ -141,7 +175,7 @@
 
                 <?php if(count($subjects) >= $x && count($subjects[$x]) > 2) { ?>
 
-                            <div class="summer">
+                            <div class="summer" style="margin:0 auto;">
                                 <h2>Summer</h2>
                                 <table>
                                     <tr>
@@ -149,6 +183,9 @@
                                         <th class='course-name'>Course Description</th>
                                         <th class='credit-units'>Units</th>
                                         <th class='prerequisites'>Prerequisites</th>
+                                        <?php if ($_SESSION['is_prog_coordinator'] == 1) {?>
+	                                    	<th>Action</th>
+	                                    <?php } ?>
                                     </tr>
                                     <?php 
 										for($z = 0; $z < count($subjects[$x][3]); $z++) {
@@ -157,6 +194,17 @@
 											echo "<td class='course-name'>". $subjects[$x][3][$z]['course_name'] ."</td>";
 											echo "<td class='credit-units'>". $subjects[$x][3][$z]['credit_units'] ."</td>";
 											echo "<td class='prerequisites'>". $subjects[$x][3][$z]['prerequisites'] ."</td>";
+											if ($_SESSION['is_prog_coordinator'] == 1) {
+    							?>
+    										<td>
+    											<button data-subjid="<?php echo $subjects[$x][3][$z]['course_id']; ?>" 
+    													data-currid="<?php echo $curriculum_id ?>" 
+    													data-progcode="<?php echo $program_code; ?>"
+    													data-curryear="<?php echo $curriculum_year; ?>"
+    													class="delete-curr-subj">delete</button>
+    										</td>
+    							<?php
+                                    		}
 											echo "</tr>";
 										}
 									?>

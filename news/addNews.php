@@ -69,8 +69,8 @@
 			logoutForm.submit();
 		}
 	</script>
-	<form action="login.php" method="POST" id="logoutForm">
-		<input type="hidden" name="logout" value="">
+	<form action="login.php" method="POST" id="logoutForm" style="display:none;">
+		<input type="hidden" name="logout" value="" style="display:none;">
 	</form>
 	<head>
 		<link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
@@ -102,7 +102,7 @@
 <div class="container">
 	<div class="content-wrapper" >
 		<div class="content">
-			<form class="addeve" enctype="multipart/form-data" method="POST" action="addNews.php">
+			<form class="addeve" enctype="multipart/form-data" method="POST" action="addNews.php" style="padding-bottom: 150px;">
 				<h1>Add News</h1>
 				<input type="text" name="title" placeholder="Title" required>
 				<input type="file" name="picture" placeholder="Browse" required>
@@ -124,7 +124,7 @@
 
 <footer>
 	<div class="lookWrap" >
-		<a class="btn btn-lg btn-success js-modal" href="#" role="button" data-toggle="modal" data-target="#demoModal"><h2>Contact Us</h2></a>
+		<h2>Contact Us</h2>
 		<div id="look">
 			<div class="contactus">
 				<h3>Ateneo de Naga University</h3>
